@@ -1,0 +1,70 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class=" col-md-6">
+            <h3 class='text-primary text-center'>Registration</h3>
+
+        <form action='addData'method="POST" autocomplete="OFF">
+            {% csrf_token %}
+        <label>Name</label>
+        <input type="text"class='form-control' name="vname"><br><br>
+        <label>Class</label>
+        <input type="text"class='form-control' name="vClass"><br><br>
+        <label>Section</label>
+        <input type="text"class='form-control' name="vsection"><br><br>
+        <label>RollNo</label>
+        <input type="text"class='form-control' name="vrollno"><br><br>
+        <form>
+        <button class="btn btn-success">submit</button>
+        <br>
+    </div>
+        <div class="col-md-6" >  
+            {% if datas%} 
+            <h3 class="page-header text-primary text-center">View details</h3>     
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>RollNo</th>
+                        <th>Update</th>
+                    
+
+                    </tr>
+                
+                </thead>
+                {% for data in datas %}
+                <tbody>
+                    <tr>
+
+                        <td>{{forloop.counter}}</td>
+                        <td>{{data.Name}}</td>
+                        <td>{{data.Class}}</td>
+                        <td>{{data.Section}}</td>
+                        <td>{{data.Rollno}}</td>
+                        <td><a class="btn btn-success" href="updateData/{{data.id}}">Update</a></td>
+                        <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
+
+                    
+                    </tr>
+                </tbody>
+                {%endfor%}
+            
+            </table>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+

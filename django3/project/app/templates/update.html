@@ -1,0 +1,32 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class=" col-md-6">
+            <h3 class='text-primary text-center'>Update</h3>
+
+        <form action="/updateData/{{datas.id}}"method="POST" autocomplete="OFF">
+            {% csrf_token %}
+        <label>Name</label>
+        <input type="text"class='form-control'value="{{datas.Name}}" name="vname"><br><br>
+        <label>Class</label>
+        <input type="text"class='form-control' value="{{datas.Class}}" name="vClass"><br><br>
+        <label>Section</label>
+        <input type="text"class='form-control' value="{{datas.Section}}" name="vsection"><br><br>
+        <label>RollNo</label>
+        <input type="text"class='form-control'value="{{datas.Rollno}}"  name="vrollno"><br><br>
+        <form>
+        <button class="btn btn-success">submit</button>
+        <br>
+    </div>
+      
+
+
+    </div>
+
+</body>
+</html>
